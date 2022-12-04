@@ -27,5 +27,6 @@
     <!-- Template Stylesheet -->
     <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 <?php

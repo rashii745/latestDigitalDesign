@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\Domain;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,12 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-
-        $domains = Domain::latest()->paginate(5);
-        return view('auth.login',compact('domains'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-
-//        return view('auth.login');
+        return view('auth.login');
     }
 
     /**
@@ -38,7 +32,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(Auth::user()->role == 'Client'){
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }else{
+            return redirect()->intended('index1');
+        }
+
     }
 
     /**

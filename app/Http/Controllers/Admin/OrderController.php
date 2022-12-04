@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
 use DB;
+
 
 class OrderController extends Controller
 {
@@ -24,6 +26,8 @@ class OrderController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +35,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.request');
     }
 
     /**
@@ -95,4 +99,5 @@ class OrderController extends Controller
         return redirect()->route('admin.orders.index')
             ->with('success','order deleted successfully');
     }
+
 }
