@@ -61,7 +61,7 @@
                         @else
                             <a href="{{url('/')}}"class="nav-item nav-link active">Home</a>
                             <a href="{{ url('/contact') }}"class="nav-item nav-link">Contact Us</a>
-                            <a href="{{ url('/support') }}"class="nav-item nav-link">Technical Support</a>
+                            <a href="{{ url('/support') }}"class="nav-item nav-link">Support</a>
                         @endauth
                     </div>
                     <div class="navbar-nav ml-auto py-0">
@@ -92,7 +92,7 @@
                             <div class="p-3" style="max-width: 700px;">
                                 <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                 <h3 class="display-4 text-white font-weight-semi-bold mb-4">Professional Designs</h3>
-                                <a href="" class="btn btn-light py-2 px-3">create Design</a>
+                                <a href="{{ url('/editDesign') }}" class="btn btn-light py-2 px-3">create Design</a>
 
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             <div class="p-3" style="max-width: 700px;">
                                 <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
                                 <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                <a href="" class="btn btn-light py-2 px-3">Create Design</a>
+                                <a href="{{ url('/editDesign') }}" class="btn btn-light py-2 px-3">Create Design</a>
                             </div>
                         </div>
                     </div>
@@ -160,74 +160,31 @@
         <h2 class="section-title px-5"><span class="px-2">You Might want to Try</span></h2>
     </div>
     <div class="row px-xl-5 pb-3">
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">logo designs</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+
+        @if(isset($templates))
+
+            @foreach ($templates as $temp)
+
+                <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                    <div class="card product-item border-0 mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img  width="250px" height="450px" class="drag-image mx-auto d-block" src="templates/{{$temp->image}}" alt="">
+                        </div>
+                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                            <h6 class="text-truncate mb-3">{{$temp->name}}</h6>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between bg-light border">
+                            @auth()
+                                <a href="{{ url('/editDesign',$temp->id) }}"class="nav-item nav-link" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
+                                <a href="{{ url('/providers') }}"class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Order Now</a>
+                            @else
+                                <a href="{{ url('/editDesign',$temp->id) }}"class="nav-item nav-link" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
+                            @endauth
+                        </div>
                     </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="{{ url('/editDesign') }}"class="nav-item nav-link" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Order Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="img/product-2.png" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">T shirts designs</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Order Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="img/product-3.png" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">fb post design</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Order Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="img/product-4.png" alt="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h6 class="text-truncate mb-3">card design</h6>
-                    <div class="d-flex justify-content-center">
-                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Edit Design</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Order Now</a>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
 
 
 @include('includes.footer')

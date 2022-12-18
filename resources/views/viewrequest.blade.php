@@ -26,7 +26,7 @@
                 <thead>
                 <tr class="text-dark">
                     <th scope="col">Service Provider</th>
-                    <th scope="col">description</th>
+                    <th scope="col">Description</th>
 
                 </tr>
                 </thead>

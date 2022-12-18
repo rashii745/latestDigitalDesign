@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bid;
+use App\Models\Component;
 use App\Models\Domain;
 use App\Models\MessageModel;
 use App\Models\OrderModel;
@@ -40,8 +41,9 @@ class PagesController extends Controller
             $domain['subdomains'] = Subdomain::where('domain_id', $domain['domain_id'])->get();
         }
 
+        $templates = Component::where('type','template')->inRandomOrder()->limit(4)->get();
 
-        return view('welcome',compact('domains'));
+        return view('welcome',compact('domains','templates'));
 
     }
     public function textcreates($request_id=null)
@@ -235,15 +237,36 @@ class PagesController extends Controller
         return view('viewrequest',compact('user_requests','domains'));
     }
 
-    public function editDesign()
+    public function editDesign($id = null)
     {
 
+        $template = '';
+        if($id){
+            $template = Component::find($id);
+        }
+        $components = Component::where('type','component')->get();
         $domains = Domain::all();
 
         foreach ($domains as $domain){
             $domain['subdomains'] = Subdomain::where('domain_id', $domain['domain_id'])->get();
         }
-        return view('editDesign',compact('domains'));
+        return view('editDesign',compact('domains','template' , 'components'));
     }
 
+    public function movePic(Request $request){
+
+        /*dd($request->image);*/
+
+
+        $image=$_POST['image'];
+
+        $image=explode(";", $image)[1];
+        $image=explode(",", $image)[1];
+        $image=str_replace(" ", "+",$image);
+
+        $image=base64_decode($image);
+        file_put_contents(".\uploads\image.png", $image);
+
+        return 'Done';
+    }
 }

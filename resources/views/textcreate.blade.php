@@ -46,16 +46,16 @@
                         </div>
 
                         <div class="col-lg-12 form-group">
-                            <strong>Message:</strong>
-                            <input type="text" name="content" value="" class="form-control" placeholder="Enter your message">
+                            <strong class=" font-weight-bold border border-white px-0 mr-20">Message</strong>
+                            <input type="text" name="content" value="" class="form-control" placeholder="Enter Your Message">
                         </div>
                         <div >
-                            <button class="btn btn-primary py-2 bg-color" type="submit" id= "Send message" >Send message</button>
+                            <button class="btn btn-primary py-2 px-6 " type="submit" id= "Send message" >Send message</button>
                             <p class="help-block text-danger"></p>
                         </div>
-            </div>
+                     </div>
                 </div>
-    </div>
+             </div>
         </form>
 
 
@@ -65,7 +65,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <h5 class="mb-4">All Messages</h5>
+                            <h5 class=" font-weight-bold border border-white px-0 mr-20">All Messages</h5>
                             <thead>
                             </thead>
                             <tbody id="msg-tbl">
@@ -108,12 +108,10 @@
                     url:'/getmsg/'+req_id,
                     data:'_token = <?php echo csrf_token() ?>',
                     success:function(data) {
-                        //console.log(data);
 
                         if(data){
 
                             var message = jQuery.parseJSON( data );
-                            // console.log(message);
 
                             var newMessages = '';
                             for (let i = 0; i < message.length; i ++ ){
@@ -121,7 +119,7 @@
                                 var content = message[i]['content'];
                                 newMessages += '<tr>'+
                                     '<td></td>'+
-                                    '<td style="background-color: #63bdda;">'+content+'</td>'+
+                                    '<td style="background-color: #D19C97;">'+content+'</td>'+
                                     '</tr>';
                             }
 
@@ -131,7 +129,7 @@
                 });
             };
 
-            setInterval(getMessage, 10000); //30000
+            setInterval(getMessage, 10000);
 
         </script>
 

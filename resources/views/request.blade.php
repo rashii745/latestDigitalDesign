@@ -34,26 +34,21 @@
                     <form method="POST" action="{{ route('requestStore') }}">
                         @csrf
 
-
                         <!-- Description -->
                         <div class="col-md-15 form-group">
-                            <label>Description</label>
+                            <label class=" font-weight-bold border border-white px-0 mr-20">Description</label>
                             <input type="hidden" name="sp" value="{{$id}}"/>
-                            <textarea name="description" class="form-control"></textarea>
+                            <textarea name="description" class="form-control"  placeholder="Enter Your Requirements"></textarea>
                         </div>
 
                         <div >
                             <button class="btn btn-primary py-2 px-4" type="submit" id="sendRequestButton">Send  Request</button>
-                            <p class="help-block text-danger"></p>
+                            <td><a class="btn btn-primary py-2 px-4 "  href="{{ url('/viewrequest',$id) }}">View Request </a></td>
                         </div>
-                       <div>
-                           <td><a class="btn btn-sm btn-primary" href="{{ url('/viewrequest',$id) }}">Request View</a></td>
 
-                       </div>
                     </form>
                 </div>
             </div>
-
 
 
     @include('includes.footer')

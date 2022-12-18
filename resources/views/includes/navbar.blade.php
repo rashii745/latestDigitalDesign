@@ -21,7 +21,7 @@
                                 <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
 
                                     @foreach ($dom->subdomains as $subdom)
-                                        <a href="" class="dropdown-item">{{ $subdom->subdomain_name }}</a>
+                                        <a href="{{ url('/products',$subdom->subdomain_id) }}" class="dropdown-item">{{ $subdom->subdomain_name }}</a>
                                     @endforeach
 
                                 </div>
