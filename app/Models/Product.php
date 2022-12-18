@@ -13,7 +13,6 @@ class Product extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'subdomain_id',
         'product_name',
         'price',
         'image',

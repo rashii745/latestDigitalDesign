@@ -12,7 +12,8 @@ class Feedback extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'feedbacks';
     protected $fillable = [
-        'name',
+        'description',
     ];
 }

@@ -22,18 +22,18 @@
                             <thead>
                             <tr>
                                 <th scope="col">S#</th>
-                                <th scope="col">Feedback by</th>
+                                <th scope="col">Feedback By</th>
                                 <th scope="col">Feedback</th>
-                                <th scope="col">Feedback to</th>
+                                <th scope="col">Feedback To</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach ($feedbacks as $feedback)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $feedback->first_name }}</td>
+                                    <td>{{ $feedback->Sp_name }}</td>
                                     <td>{{ $feedback->description }}</td>
-                                    <td>{{ $feedback->first_name }}</td>
+                                    <td>{{ $feedback->Client_name }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -41,4 +41,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

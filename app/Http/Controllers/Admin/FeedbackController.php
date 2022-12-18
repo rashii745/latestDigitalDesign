@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 use DB;
@@ -14,11 +14,14 @@ class FeedbackController extends Controller
      */
     public function index()
     {
+
         $feedbacks = Feedback::latest()->paginate(5);
         $feedbacks= DB::table('feedbacks')
-            ->join('users', 'users.id', '=', 'feedbacks.user_id')
-            ->select('feedbacks.feedback_id','feedbacks.description','users.first_name','users.role')
+            ->join('users as u1', 'feedbacks.Client_id', '=', 'u1.id')
+            ->join('users as u2', 'feedbacks.Service-provider_id', '=', 'u2.id')
+            ->select('feedbacks.*','u1.first_name as Client_name','u2.first_name as Sp_name')
             ->get();
+
         return view('admin.feedbacks.index',compact('feedbacks'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

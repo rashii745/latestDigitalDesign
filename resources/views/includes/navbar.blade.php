@@ -10,8 +10,8 @@
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <div class="nav-item dropdown">
                     </div>
-
                     <div
+
                     @foreach ($domains as $dom)
 
                         @if($dom->subdomains)
@@ -32,7 +32,6 @@
                         @endif
                     @endforeach
                 </div>
-
             </nav>
         </div>
         <div class="col-lg-9">
@@ -45,17 +44,12 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        @auth
-                            <a href="{{url('/')}}"class="nav-item nav-link active">Home</a>
-                            <a href="{{ url('/providers') }}"class="nav-item nav-link">Service Providers</a>
-                            <a href="{{ url('/contact') }}"class="nav-item nav-link">Contact Us</a>
-                            <a href="{{ url('/support') }}"class="nav-item nav-link">Support</a>
-                        @else
-                            <a href="{{url('/')}}"class="nav-item nav-link active">Home</a>
-                            <a href="{{ url('/contact') }}"class="nav-item nav-link">Contact Us</a>
-                            <a href="{{ url('/support') }}"class="nav-item nav-link">Technical Support</a>
+                        <a href="{{url('/')}}" class="nav-item nav-link">Home</a>
+                        <a href="{{ url('/request') }}" class="nav-item nav-link">Request</a>
+{{--                        <a href="{{ url('/order') }}" class="nav-item nav-link">Order</a>--}}
+                        <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact Us</a>
+                        <a href="{{ url('/support') }}" class="nav-item nav-link">Technical Support</a>
 
-                        @endauth
 
                     </div>
                     <div class="navbar-nav ml-auto py-0">

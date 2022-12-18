@@ -10,7 +10,8 @@
                 <div class="col-lg-12 margin-tb"></div>
             </div>
 
-            @if ($message = Session::get('success'))
+
+        @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
@@ -37,7 +38,7 @@
                             <td>
                                 <form action="{{ route('requests.destroy',$UserRequest->request_id) }}" method="POST">
 
-                                    <a class="btn btn-info" href="{{ route('requests.show',$UserRequest->request_id) }}">Show</a>
+                                    <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('requests.show',$UserRequest->request_id) }}">Show</a>
 
                                     @csrf
                                     @method('DELETE')
@@ -48,5 +49,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
 
 @endsection

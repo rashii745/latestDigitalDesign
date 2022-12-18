@@ -1,6 +1,6 @@
 <!-- Footer Start -->
 <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
-    <div class="row px-xl-3 pt-3">
+    <div class="row px-xl-5 pt-5">
         <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
             <a href="" class="text-decoration-none">
                 <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">DD</span>Agency</h1>
@@ -21,8 +21,8 @@
                     <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-dark mb-2" href="{{url('/')}}"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                      {{--  <a class="text-dark mb-2" href="{{ url('/request') }}"><i class="fa fa-angle-right mr-2"></i>Requets</a>
-                        <a class="text-dark mb-2" href="{{ url('/order')}}"><i class="fa fa-angle-right mr-2"></i>Order</a>--}}
+                        <a class="text-dark mb-2" href="{{ url('/request') }}"><i class="fa fa-angle-right mr-2"></i>Requets</a>
+                        <a class="text-dark mb-2" href="{{ url('/order')}}"><i class="fa fa-angle-right mr-2"></i>Order</a>
                         <a class="text-dark" href="{{ url('/contact') }}"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         <a class="text-dark mb-2" href="{{ url('/support') }}"><i class="fa fa-angle-right mr-2"></i>Technical Support</a>
                     </div>
@@ -54,11 +54,13 @@
             <p class="mb-md-0 text-center text-md-left text-dark">
                 &copy; <a class="text-dark font-weight-semi-bold" href="#">DD Agency</a>. All Rights Reserved. Designed
                 by
-                <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Rashida</a><br>
+                <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">RA digitech</a><br>
 
             </p>
         </div>
-
+     {{--   <div class="col-md-6 px-xl-0 text-center text-md-right">
+            <img class="img-fluid" src="img/payments.png" alt="">
+        </div>--}}
     </div>
 </div>
 <!-- Footer End -->

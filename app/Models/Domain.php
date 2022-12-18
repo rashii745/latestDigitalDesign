@@ -12,6 +12,8 @@ class Domain extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'domains';
+    protected $primaryKey = 'domain_id';
     protected $fillable = [
         'domain_name',
     ];
