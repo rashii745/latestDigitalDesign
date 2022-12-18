@@ -5,15 +5,11 @@
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h3 class="mb-4">Domains List</h3>
-            <div class="row">
-                <div class="col-lg-12 margin-tb"></div>
+            <h3 class="mb-4" style="display:inline;">All Domains List</h3>
+            <div class="pull-right"  style="display:inline; float: right">
+                <a class="btn btn-sm btn-secondary py-2 px-4" href="{{ route('domains.create') }}"> Create New Domain</a>
             </div>
-                    <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('domains.create') }}"> Create New Domain</a>
-                    </div>
-                </div>
-            </div>
+
 
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -39,9 +35,9 @@
                                 <td>
                                     <form action="{{ route('domains.destroy',$domain->domain_id) }}" method="POST">
 
-                                        <a class="btn btn-info" href="{{ route('domains.show',$domain->domain_id) }}">Show</a>
+                                        <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('domains.show',$domain->domain_id) }}">Show</a>
 
-                                        <a class="btn btn-primary" href="{{ route('domains.edit',$domain->domain_id) }}">Edit</a>
+                                        <a class="btn btn-sm btn-primary py-2 px-4" href="{{ route('domains.edit',$domain->domain_id) }}">Edit</a>
 
                                         @csrf
                                         @method('DELETE')
@@ -58,5 +54,7 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 @endsection

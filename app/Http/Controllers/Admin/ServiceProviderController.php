@@ -1,10 +1,18 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Feedback;
+use App\Models\Order;
+use App\Models\Service_provider_profile;
 use App\Models\Serviceprovider;
 use App\Models\User;
+use App\Models\UserRequest;
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class ServiceProviderController extends Controller
 {
@@ -108,4 +116,17 @@ class ServiceProviderController extends Controller
         return redirect()->route('serviceproviders.index')
             ->with('success','deleted successfully');
     }
+
+    public function viewfeedbacks()
+    {
+        $feedbacks = Feedback::latest()->paginate(5);
+        $feedbacks= DB::table('feedbacks')
+            ->join('users', 'users.id', '=', 'feedbacks.user_id')
+            ->select('feedbacks.feedback_id','feedbacks.description','users.first_name','users.role')
+            ->get();
+        return view('ServiceProvider.viewfeedbacks.index',compact('feedbacks'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+
 }

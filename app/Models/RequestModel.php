@@ -13,11 +13,10 @@ class RequestModel extends Authenticatable
      * @var array<int, string>
      */
     protected $table = 'requests';
-    protected $primaryKey = 'request_id';
     protected $fillable = [
-        'request_id',
-        'client_id',
-        'sp_id',
+        'user_id',
+        'name',
+        'email',
         'description',
 
 

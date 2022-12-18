@@ -29,8 +29,17 @@ class LoginController extends Controller
      * @var string
      */
 //    protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = '/detail';
 
+    protected $redirectTo = '/detail';
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
+    }
     protected function redirectTo()
     {
         if (auth()->user()->role == 'client') {
@@ -43,7 +52,9 @@ class LoginController extends Controller
         }
         return view('welcome',compact('domains'));
 
+
     }
+
 
     /**
      * Create a new controller instance.

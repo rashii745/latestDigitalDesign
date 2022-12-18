@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 
 use App\Models\User;
@@ -109,5 +110,29 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success','User deleted successfully');
+    }
+    public function sp_profile(Service_provider_profile $user)
+    {
+        $id = Auth::user()->id;
+        $user = Service_provider_profile::find($id);
+
+
+        /* $request->validate([
+             'first_name' => 'required',
+             'last_name' => 'required',
+             'email' => 'required',
+             'mob_no' => 'required',
+             'specialization' => 'required',
+             'experience' => 'required',
+
+         ]);*/
+
+        $Service_provider_profile= DB::table(' $service_provider_profiles')
+            ->join('users', 'users.id', '=', 'profile.user_id')
+            ->select('profile.profile_id','profile.specialization','profile.experience',
+                'users.first_name','users.last_name','users.email','users.mob_no','users.role')
+            ->where('users.role','Service-Provider')->get();
+        return redirect()->route('ServiceProvider.sp_profile',compact('Service_provider_profile'))
+            ->with('success','Profile created successfully.');
     }
 }

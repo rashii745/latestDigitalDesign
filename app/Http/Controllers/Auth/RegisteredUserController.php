@@ -20,13 +20,10 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
+
     public function create()
     {
-        $domains = Domain::latest()->paginate(5);
-        return view('auth.register',compact('domains'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-
-//        return view('auth.register');
+        return view('auth.register');
     }
 
     /**
@@ -60,6 +57,11 @@ class RegisteredUserController extends Controller
         }
         event(new Registered($user));
         Auth::login($user);
-        return view('welcome',compact('domains'));
+        if(Auth::user()->role == 'Client'){
+            return view('welcome',compact('domains'));
+        }else{
+            return redirect()->intended('index1');
+        }
+
     }
 }
