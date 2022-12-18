@@ -67,7 +67,7 @@ class PageController extends Controller
             $counts['sp_total_requests'] = $totalRequests;
             $counts['Clients'] = User::where('role','Client')->count();
             $counts['Service Provider'] = User::where('role','Service-Provider')->count();
-            $counts['OrdersTbl'] = DB::table('orders')
+            $counts['OrdersTbl1'] = DB::table('orders')
                 ->join('users', 'users.id', '=', 'orders.user_id')
                 ->select('orders.*','users.first_name','users.email','users.mob_no')
                 ->get();

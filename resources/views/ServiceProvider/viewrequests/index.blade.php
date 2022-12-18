@@ -37,8 +37,8 @@
                             <td>
                                 <form action="{{ route('viewrequests.destroy',$UserRequest->request_id) }}" method="POST">
 
-                                    <a class="btn btn-info" href="{{ route('viewrequests.show',$UserRequest->request_id) }}">Show</a>
-                                    <a class="btn btn-info" href="{{ route('viewrequests.edit',$UserRequest->request_id) }}">Message</a>
+                                    <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('viewrequests.show',$UserRequest->request_id) }}">Show</a>
+                                    <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('viewrequests.edit',$UserRequest->request_id) }}">Message</a>
 
 
                                     @csrf
@@ -50,5 +50,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
 
 @endsection

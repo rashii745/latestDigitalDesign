@@ -5,7 +5,7 @@
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h3 class="mb-4">Feedbacks List</h3>
+            <h3 class="mb-4">All Feedbacks List</h3>
             <div class="row">
                 <div class="col-lg-12 margin-tb"></div>
             </div>
@@ -39,4 +39,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

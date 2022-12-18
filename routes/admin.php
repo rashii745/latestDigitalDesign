@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ServiceProviderController;
 use App\Http\Controllers\Admin\ServiceProviderProfileController;
 use App\Http\Controllers\Admin\ViewOrdersController;
 use App\Http\Controllers\Admin\ViewUserRequestsController;
-;
+use App\Http\Controllers\Admin\ComponentsController;
 
 
 
@@ -36,6 +36,7 @@ Route::resource('requests', UserRequestController::class);
 Route::resource('vieworders', ViewOrdersController::class);
 Route::resource('viewrequests', ViewUserRequestsController::class);
 Route::resource('serviceproviderprofile', ServiceProviderProfileController::class);
+Route::resource('components', ComponentsController::class);
 
 
 

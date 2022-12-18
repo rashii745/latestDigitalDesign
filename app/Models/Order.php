@@ -12,6 +12,6 @@ class Order extends Model
     protected $primaryKey = 'order_id';
     protected $fillable = [
         'user_id','Service-Provider_id','Client_id','name','email','mob_no',
-        'description', 'status'
+        'description', 'status','file'
     ];
 }

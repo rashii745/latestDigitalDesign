@@ -25,8 +25,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-bounding-box"></i>Manage Tool</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{URL('domains')}}" class="dropdown-item"><i class="bi bi-cast"></i> Manage Domains</a>
-                            <a href="{{URL('subdomains')}}" class="dropdown-item"><i class="bi bi-collection"></i> Manage SubDomains</a>
+                            <a href="{{URL('domains')}}" class="dropdown-item"> Manage Domains</a>
+                            <a href="{{URL('subdomains')}}" class="dropdown-item"> Manage SubDomains</a>
+                            <a href="{{URL('components')}}" class="dropdown-item"> Manage Components</a>
                         </div>
                     </div>
                     <a href="{{URL('serviceproviders')}}" class="nav-item nav-link"><i class="bi bi-people"></i> Manage S-P's</a>

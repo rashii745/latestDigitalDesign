@@ -113,6 +113,41 @@
                     </div>
                 </div>
                 @endisset
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-light text-center rounded p-4">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h4 class="mb-0">Orders</h4>
+                            <a href="">Show All</a>
+                        </div>
+                        <div class="table-responsive">
+                            @isset($counts)
+                                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                    <thead>
+                                    <tr class="text-dark">
+                                        <th scope="col">Order By</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Contact Number</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($counts['OrdersTbl1'] as $order)
+                                        <tr>
+                                            <td>{{ $order->first_name }}</td>
+                                            <td>{{ $order->email }}</td>
+                                            <td>{{ $order->mob_no }}</td>
+                                            <td>{{ $order->description }}</td>
+                                            <td>{{ $order->status }}</td>
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @endisset
+                        </div>
+                    </div>
+                </div>
                 @elseif(Auth::user()->role=='Service-Provider')
                     @isset($counts)
                     <div class="container-fluid pt-4 px-4">
@@ -164,6 +199,41 @@
                     </div>
 
                     @endisset
+                    <div class="container-fluid pt-4 px-4">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h4 class="mb-0">Orders</h4>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="table-responsive">
+                                @isset($counts)
+                                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                        <thead>
+                                        <tr class="text-dark">
+                                            <th scope="col">Order By</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($counts['OrdersTbl'] as $order)
+                                            <tr>
+                                                <td>{{ $order->first_name }}</td>
+                                                <td>{{ $order->email }}</td>
+                                                <td>{{ $order->mob_no }}</td>
+                                                <td>{{ $order->description }}</td>
+                                                <td>{{ $order->status }}</td>
+
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endisset
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <a> </a>
                 @endif
@@ -172,10 +242,10 @@
             <!-- Count End -->
 
             <!-- Orders Start -->
-            <div class="container-fluid pt-4 px-4">
+            {{--<div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Orders</h6>
+                        <h4 class="mb-0">Orders</h4>
                         <a href="">Show All</a>
                     </div>
                     <div class="table-responsive">
@@ -206,7 +276,7 @@
                         @endisset
                     </div>
                 </div>
-            </div>
+            </div>--}}
             <!-- Order End -->
 
             @include('contents.footer')

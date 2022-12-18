@@ -5,7 +5,7 @@
 @section('content')
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h3 class="mb-4">Orders List</h3>
+            <h3 class="mb-4">All Orders List</h3>
             <div class="row">
                 <div class="col-lg-12 margin-tb"></div>
             </div>
@@ -35,8 +35,7 @@
                         <td>{{ $order->order_status }}</td>
                         <td>
                            <form action="{{ route('vieworders.destroy',$order->order_id) }}" method="POST">
-                                <a class="btn btn-info" href="{{ route('vieworders.show',$order->order_id) }}">Show Detail</a>
-{{--                               <a class="btn btn-info" href="{{ route('vieworders.edit',$order->order_id) }}">Message</a>--}}
+                                <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('vieworders.show',$order->order_id) }}">Show Detail</a>
                                 @csrf
                            </form>
                         </td>
@@ -45,6 +44,8 @@
                 </tbody>
             </table>
         </div>
+     </div>
+    </div>
 @endsection
 
 

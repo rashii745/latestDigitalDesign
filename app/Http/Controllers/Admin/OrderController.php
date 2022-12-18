@@ -19,8 +19,9 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $orders= DB::table('orders')
-            ->join('users', 'users.id', '=', 'orders.user_id')
-            ->select('orders.order_id','orders.description','users.first_name','users.email','users.mob_no')
+            ->join('users as u1', 'orders.Client_id', '=', 'u1.id')
+            ->join('users as u2', 'orders.Service-provider_id', '=', 'u2.id')
+            ->select('orders.order_id','orders.description','u1.first_name as Client_name','u2.first_name as Sp_name')
             ->get();
         return view('admin.orders.index',compact('orders'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -57,11 +58,16 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $order= DB::table('orders')
-            ->join('users', 'users.id', '=', 'orders.user_id')
-            ->select('orders.order_id','orders.description','users.first_name','users.email','users.mob_no')
+
+        $orders= DB::table('orders')
+            ->join('users as u1', 'orders.Client_id', '=', 'u1.id')
+            ->join('users as u2', 'orders.Service-provider_id', '=', 'u2.id')
+            ->select('orders.order_id','orders.description','u1.first_name as Client_name','u2.first_name as Sp_name',
+                'u1.email as email1','u2.email as email2', 'u1.mob_no as mob1','u2.mob_no as mob2')
+            ->where('orders.order_id',$order['order_id'])
             ->first();
-        return view('admin.orders.show',compact('order'));
+//dd($orders);
+        return view('admin.orders.show',compact('orders'));
     }
 
     /**

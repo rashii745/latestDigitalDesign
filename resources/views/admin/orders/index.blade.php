@@ -15,33 +15,37 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">S#</th>
-                    <th scope="col">Order By</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($orders as $order)
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $order->first_name }}</td>
-                        <td>{{ $order->description }}</td>
-                        <td>
-                           <form action="{{ route('orders.destroy',$order->order_id) }}" method="POST">
-                                <a class="btn btn-info" href="{{ route('orders.show',$order->order_id) }}">Show Detail</a>
-                                @csrf
-                           </form>
-                        </td>
+                        <th scope="col">S#</th>
+                        <th scope="col">Order By</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Order To</th>
+                        <th scope="col">Action</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $order->Client_name }}</td>
+                            <td>{{ $order->description }}</td>
+                            <td>{{ $order->Sp_name }}</td>
+                            <td>
+                               <form action="{{ route('orders.destroy',$order->order_id) }}" method="POST">
+                                    <a class="btn btn-sm btn-info py-2 px-4" href="{{ route('orders.show',$order->order_id) }}">Show Detail</a>
+                                    @csrf
+                               </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
 @endsection
 
 

@@ -78,10 +78,12 @@ class ViewOrdersController extends Controller
      */
     public function show(Order $order)
     {
+
         $order= DB::table('orders')
             ->join('users', 'users.id', '=', 'orders.user_id')
             ->select('orders.order_id','orders.description','orders.status','users.first_name','users.email','users.mob_no')
             ->where('user_id',Auth::user()->id)->first();
+
         return view('ServiceProvider.vieworders.show',compact('order'));
     }
 
@@ -93,19 +95,34 @@ class ViewOrdersController extends Controller
      */
 
 
-    public function update(Request $request)
+    public function update(Request $request, Order $order, $order_id)
     {
+
         $request->validate([
-            'file' => 'required|mimes:pdf,jpeg,jpg,png|max:2048',
+            'status'=>'required',
+            'avatar' => 'required|mimes:pdf,jpeg,jpg,png,gif|max:2048',
         ]);
 
-        $fileName = time().'.'.$request->file->extension();
+        // File upload here
+        $fileName = '';
+        $file = $request->file('avatar');
 
-        $request->file->move(public_path('uploads'), $fileName);
+        if ($file) {
 
-        return back()
-            ->with('success','You have successfully upload file.')
-            ->with('file',$fileName);
+            $destinationPath = public_path('uploads');
+            $fileName = "avatar_" . time() . "." . $file->guessExtension();
+            $file->move($destinationPath, $fileName);
+        }
+
+        $file = Order::find($order_id);
+        $file->status = $request['status'];
+
+        $file->file = $fileName;//$request['file'];
+//        $file->save();
+        $file->update($request->all());
+
+        return redirect()->route('vieworders.show',$order_id)
+            ->with('success','Order completed successfully');
 
     }
 
