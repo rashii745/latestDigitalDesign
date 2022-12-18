@@ -20,13 +20,19 @@ Route::get('/detail',[PagesController::class,'shopDetail']);
 Route::get('/order',[PagesController::class,'orders']);
 Route::get('/contact',[PagesController::class,'contact']);
 Route::get('/support',[PagesController::class,'supports']);
-Route::get('/request',[PagesController::class,'requests']);
-
+Route::get('/request/{id?}',[PagesController::class,'requests']);
+Route::get('/providers',[PagesController::class,'serviceproviders']);
+Route::get('/textcreate/{request_id?}',[PagesController::class,'textcreates']);
+Route::get('/viewrequest/{id?}',[PagesController::class,'requesthistory']);
 Route::get('/products/{id?}',[PagesController::class,'products']);
-
+Route::get('/editDesign/{id?}',[PagesController::class,'editDesign']);
+Route::get('/getmsg/{req_id}',[PagesController::class,'getmsg']);
 
 Route::post('/requestStore',[PagesController::class,'requestStore'])->name('requestStore');
 Route::post('/forOrder',[PagesController::class,'forOrder'])->name('forOrder');
+Route::post('/messageStore',[PagesController::class,'messageStore'])->name('messageStore');
+
+Route::post('/movePic',[PagesController::class,'movePic'])->name('movePic');
 
 
 Route::get('/dashboard', function ()
@@ -34,8 +40,8 @@ Route::get('/dashboard', function ()
     return view('welcome');
 })->middleware(['auth'])->name('dashboard');
 
-
-require __DIR__.'/admin.php';
 require __DIR__.'/auth.php';
+
+require 'admin.php';
 
 

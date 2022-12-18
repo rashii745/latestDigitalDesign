@@ -26,16 +26,17 @@
         <table class="table text-start align-middle table-bordered table-hover mb-0">
             <thead>
             <tr class="text-dark">
-                <th scope="col">Product Name</th>
-                <th scope="col">Image</th>
+                <th scope="col">Design Name</th>
+                <th scope="col">Custom Design</th>
             </tr>
             </thead>
             <tbody>
             @foreach ($products as $pro)
                 <tr>
                     <td>{{$pro->product_name}}</td>
-                    <td>{{$pro->product_image}}</td>
+                    <td><a class="btn btn-sm btn-primary" href="{{ url('/editDesign') }}" >Create Design</a></td>
                 </tr>
+
             @endforeach
             </tbody>
         </table>

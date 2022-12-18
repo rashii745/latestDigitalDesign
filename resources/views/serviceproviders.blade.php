@@ -25,9 +25,10 @@
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
                 <tr class="text-dark">
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
+                    <th scope="col">Service Provider</th>
+                    {{--<th scope="col">Last Name</th>--}}
                     <th scope="col">Email</th>
+                    <th scope="col">Experience</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -36,9 +37,10 @@
                 <tr>
 
                         <td>{{ $us->first_name }}</td>
-                        <td>{{ $us->last_name }}</td>
+                        {{--<td>{{ $us->last_name }}</td>--}}
                         <td>{{ $us->email }}</td>
-                        <td><a class="btn btn-sm btn-primary" href="{{ url('/request',$us->id) }}">Order</a></td>
+                        <td>{{ "Designs" }}</td>
+                        <td><a class="btn btn-sm btn-primary" href="{{ url('/request',$us->id) }}">Bid</a></td>
 
                 </tr>
                 @endforeach

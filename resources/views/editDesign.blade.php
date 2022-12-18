@@ -1,5 +1,6 @@
 @include('includes.head')
 
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -7,6 +8,7 @@
 <script src="tool/jquery.ui.rotatable.js"></script>
 <script type="text/javascript" src="tool/html2canvas.js"></script>
 <link rel="stylesheet" href="tool/jquery.ui.rotatable.css">
+
 
 <body>
 
@@ -42,28 +44,39 @@
                         <h2>Generic <span class="section-intro__style">Components</span></h2>
                         <br><p>Click the component to load it</p>
                     </div>
-
-                    <img src="img/product-1.jpg" id="1" style="width: 50px; height: 50px;" onclick="test(1)" />
-                    &nbsp;
+                    @foreach ($components as $comp)
+                        <img src="{{ asset('templates/' . $comp->image) }}" id="{{($comp->id) }}" style="width: 50px; height: 50px;" onclick="test({{$comp->id }})" />
+                    @endforeach
 
                 </div>
 
                 <div class="col-md-6 col-lg-6 col-xl-4">
 
+                    @if($template == "")
 
-                    <?php
-                    $designName = "Test";
-                    $picurl = 'img/product-1.jpg';
-                    ?>
-                    <div class="section-intro pb-60px">
+                        <div class="section-intro pb-60px">
                         <h2>Your <span class="section-intro__style">Design</span></h2>
-                        <br><p><?php echo $designName; ?></p>
+                        <br><p>Custom Design</p>
                     </div>
-                    <div id="screen">
-                        <img src="<?php echo $picurl; ?>" width="300px" height="450px" class="drag-image mx-auto d-block" id="draggable" />
+                        <div style="background-color: black; width: 1vw;height: 1vw" onclick="changeColor(1)"></div>
+                        <div style="background-color: red; width: 1vw;height: 1vw" onclick="changeColor(2)"></div>
+                        <div style="background-color: orange; width: 1vw;height: 1vw" onclick="changeColor(3)"></div>
+
+                        <div id="screen">
+                        <img id="color-img" src="{{ asset('templates/blankpic.jpeg') }}" width="300px" height="450px" style="border: 1px solid black" class="drag-image mx-auto d-block" id="draggable" />
                     </div>
-                    <div class="checkout_btn_inner d-flex align-items-center">
-                        <button class="button button-header" onclick="doCapture()">Save</button>
+                   @else
+                        <div class="section-intro pb-60px">
+                            <h2>Your <span class="section-intro__style">Design</span></h2>
+                            <br><p>{{$template->name}}</p>
+                        </div>
+                        <div id="screen">
+                            <img src="{{ asset('templates/' . $template->image) }}" width="300px" height="450px" class="drag-image mx-auto d-block" id="draggable" />
+                        </div>
+                    @endif
+                    <div class="checkout_btn_inner  d-flex align-items-center">
+
+                        <button class="btn btn-sm btn-primary" onclick="doCapture()">Save</button>
                     </div>
                 </div>
 
@@ -96,16 +109,41 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-@include('includes.scripts')
+{{--@ include('includes.scripts')--}}
 
 
 <script type="text/javascript">
+
+
+    function changeColor(flag){
+
+        var public = '{{ asset('templates/') }}';
+        var img = '';
+
+        if(flag == 1)
+        {
+            img = 'black.jpg';
+        }
+        else if(flag == 2)
+        {
+            img = 'red.jpg';
+        }
+        else if(flag == 3)
+        {
+            img = 'orange.jpg';
+        }else{
+            img = 'blankpic.jpeg';
+        }
+
+        $("#color-img").attr("src", public+"/"+img);
+
+    }
     function test(idImg){
         var menuID = idImg + new Date().getUTCMilliseconds();
         var x = document.getElementById(idImg).src;
         var funId="draggable_"+menuID;
-        var img =
-            '<div id="draggable_'+menuID+'" > <div id="img_'+menuID+'" ><a id="draggablei_'+menuID+'" onclick="removeComponent(this)" style="cursor:pointer; top:-10px; right:-10px; color: red;   float: right;">x</a></div></div>';
+
+        var img = '<div id="draggable_'+menuID+'" > <div id="img_'+menuID+'" ><a id="draggablei_'+menuID+'" onclick="removeComponent(this)" style="cursor:pointer; top:-10px; right:-10px; color: red;   float: right;">x</a></div></div>';
 
 
         $("#screen1").append(img);
@@ -138,18 +176,19 @@
                 $dataOfImg=canvas.toDataURL("image/png",0.9);
                 console.log($dataOfImg);
                 //Ajax to prevent page from reload
-                $.ajax({//remove cart-item from dataBase
-                    url:"tool/movePic.php",
+                $.ajax({
+                    url:"/movePic",
                     type:"POST",
                     data:{
+                        _token : '{{csrf_token()}}',
                         image: canvas.toDataURL("image/png",0.9)
                     },
                     success:function(response) {
+
                         if(response == "Done"){
-                            alert ("Done Finally");
-                        }else {
-                            console.log(response);
-                            alert("Still not done");
+
+                        } else {
+
                         }
 
                     },
