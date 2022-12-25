@@ -27,6 +27,7 @@
                 <tr class="text-dark">
                     <th scope="col">Service Provider</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Message</th>
 
                 </tr>
                 </thead>

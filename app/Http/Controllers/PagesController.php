@@ -188,6 +188,23 @@ class PagesController extends Controller
         return view('request',compact('domains','id'));
     }
 
+    public function requesthistory($id = null)
+    {
+
+        $domains = Domain::all();
+        foreach ($domains as $domain){
+            $domain['subdomains'] = Subdomain::where('domain_id', $domain['domain_id'])->get();
+        }
+        $user_requests = DB::table('requests')
+            ->join('users as u1', 'requests.client_id', '=', 'u1.id')
+            ->join('users as u2', 'requests.sp_id', '=', 'u2.id')
+            ->select('requests.*','u1.first_name as client_name','u2.first_name as sp_name')
+            ->where('requests.client_id',Auth::user()->id)
+            ->where('requests.sp_id',$id)
+            ->get();
+
+        return view('viewrequest',compact('user_requests','domains'));
+    }
 
 
     public function products($id = null)
@@ -219,23 +236,7 @@ class PagesController extends Controller
 
         return view('serviceproviders',compact('domains','users'));
     }
-    public function requesthistory($id = null)
-    {
 
-        $domains = Domain::all();
-        foreach ($domains as $domain){
-            $domain['subdomains'] = Subdomain::where('domain_id', $domain['domain_id'])->get();
-        }
-        $user_requests = DB::table('requests')
-            ->join('users as u1', 'requests.client_id', '=', 'u1.id')
-            ->join('users as u2', 'requests.sp_id', '=', 'u2.id')
-            ->select('requests.*','u1.first_name as client_name','u2.first_name as sp_name')
-            ->where('requests.client_id',Auth::user()->id)
-            ->where('requests.sp_id',$id)
-            ->get();
-
-        return view('viewrequest',compact('user_requests','domains'));
-    }
 
     public function editDesign($id = null)
     {
@@ -255,18 +256,14 @@ class PagesController extends Controller
 
     public function movePic(Request $request){
 
-        /*dd($request->image);*/
-
-
         $image=$_POST['image'];
-
         $image=explode(";", $image)[1];
         $image=explode(",", $image)[1];
         $image=str_replace(" ", "+",$image);
-
         $image=base64_decode($image);
         file_put_contents(".\uploads\image.png", $image);
-
+       /* $image = "image" . time() . "." . $image->guessExtension();
+        $image->move(".\uploads\image.png", $image);*/
         return 'Done';
     }
 }

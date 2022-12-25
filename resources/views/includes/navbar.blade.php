@@ -45,8 +45,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a href="{{url('/')}}" class="nav-item nav-link">Home</a>
-                        <a href="{{ url('/request') }}" class="nav-item nav-link">Request</a>
-{{--                        <a href="{{ url('/order') }}" class="nav-item nav-link">Order</a>--}}
+                        {{--<a href="{{ url('/request') }}" class="nav-item nav-link">Request</a>--}}
                         <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact Us</a>
                         <a href="{{ url('/support') }}" class="nav-item nav-link">Technical Support</a>
 

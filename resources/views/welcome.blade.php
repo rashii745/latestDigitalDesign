@@ -148,6 +148,12 @@
                 <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
             </div>
         </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <div class="d-flex align-items-center border mb-4" style="padding:50px;">
+                <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                <h5 class="font-weight-semi-bold m-0">Best Services</h5>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Featured End -->
@@ -168,7 +174,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="card product-item border-0 mb-4">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img  width="250px" height="450px" class="drag-image mx-auto d-block" src="templates/{{$temp->image}}" alt="">
+                            <img  width="250px" height="400px" class="drag-image mx-auto d-block" src="templates/{{$temp->image}}" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3">{{$temp->name}}</h6>
