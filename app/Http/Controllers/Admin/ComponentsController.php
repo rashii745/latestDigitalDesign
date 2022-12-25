@@ -14,9 +14,9 @@ class ComponentsController extends Controller
      */
     public function index()
     {
-        $components = Component::latest()->paginate(5);
+        $components = Component::latest()->paginate(200);
         return view('admin.components.index',compact('components'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 200);
     }
 
     /**

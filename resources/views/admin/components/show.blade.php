@@ -17,13 +17,11 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <strong>Component Name:</strong>
-                    <input type="text" name="first_name" value="{{ $component->name }}" class="form-control mt-2 mb-3"
+                    <input type="text" name="first_name" value="{{ $component->name }}" class="form-control mt-2 mb-4"
                            placeholder="First Name" disabled>
-                    <div class="form-group"><strong>Component:</strong></div>
-                        <img class="rounded-circle me-lg-2" src="{{ asset('admin/components/'. $component->image) }}"
-                                 alt="{{$component->name}}" style="width: 100px; height: 100px;">
-                        </div>
-                    </div>
+
+                    <img class=" rounded-square me-lg-4" src="{{ asset('admin/components/'. $component->image) }}"
+                             alt="{{$component->name}}" style=" width: 210px; height: 290px;">
 
                 </div>
             </div>

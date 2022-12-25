@@ -17,6 +17,6 @@ class Subdomain extends Authenticatable
     protected $table = 'subdomains';
     protected $primaryKey = 'subdomain_id';
     protected $fillable = [
-        'name',
+        'domain_id','subdomain_name',
     ];
 }

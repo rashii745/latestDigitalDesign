@@ -1,6 +1,6 @@
 @extends('master.layout')
 @section('title')
-    Show Domains
+    Show Request
 @endsection
 @section('content')
     <div class="col-12">
