@@ -9,7 +9,7 @@ class Component extends Model
 {
     use HasFactory;
     protected $table = 'components';
-    protected $fillable = [
-        'id','name','image','type'
-    ];
+
+    protected $primaryKey = 'id';
+    protected $fillable = ['id','name','image','type'];
 }

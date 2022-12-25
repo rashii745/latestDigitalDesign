@@ -15,9 +15,9 @@ class SubDomainController extends Controller
      */
     public function index()
     {
-        $subdomains = Subdomain::latest()->paginate(5);
+        $subdomains = Subdomain::latest()->paginate(100);
         return view('admin.subdomains.index',compact('subdomains'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
     /**

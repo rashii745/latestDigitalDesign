@@ -7,7 +7,7 @@
         <div class="bg-light rounded h-100 p-4">
             <h3 class="mb-4" style="display:inline;">All Sub Domains List</h3>
             <div class="pull-right"  style="display:inline; float: right">
-                <a class="btn btn-sm btn-secondary py-2 px-4" href="{{ route('subdomains.create') }}"> Create New Domain</a>
+                <a class="btn btn-sm btn-secondary py-2 px-4" href="{{ route('subdomains.create') }}"> Create New Sub Domain</a>
             </div>
 
     @if ($message = Session::get('success'))

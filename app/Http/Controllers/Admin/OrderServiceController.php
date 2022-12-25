@@ -15,9 +15,9 @@ class OrderServiceController extends Controller
      */
     public function index()
     {
-        $order_services = Order_service::latest()->paginate(5);
+        $order_services = Order_service::latest()->paginate(10);
         return view('admin.order_services.index',compact('order_services'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
