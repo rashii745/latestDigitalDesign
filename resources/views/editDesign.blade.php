@@ -9,6 +9,8 @@
 <script type="text/javascript" src="tool/html2canvas.js"></script>
 <link rel="stylesheet" href="tool/jquery.ui.rotatable.css">
 
+<script src="tool/jquery.textover.min.js"></script>
+
 
 <body>
 
@@ -71,7 +73,7 @@
                             <br><p>{{$template->name}}</p>
                         </div>
                         <div id="screen">
-                            <img src="{{ asset('templates/' . $template->image) }}" width="300px" height="450px" class="drag-image mx-auto d-block" id="draggable" />
+                            <img id="color-img" src="{{ asset('templates/' . $template->image) }}" width="300px" height="450px" class="drag-image mx-auto d-block" id="draggable" />
                         </div>
                     @endif
                     <div class="checkout_btn_inner  d-flex align-items-center">
@@ -110,6 +112,19 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 {{--@ include('includes.scripts')--}}
+
+{{--<script type="text/javascript">
+    jQuery(function($){
+
+        var textover_api;
+
+        $('#screen').TextOver({}, function() {
+            textover_api = this;
+        });
+
+    });
+
+</script>--}}
 
 
 <script type="text/javascript">
@@ -187,17 +202,10 @@
 
                         if(response == "Done"){
 
-                        } else {
-
-                        }
-
-                    },
+                        } else {}},
                     error:function(jqXHR, exception){
                         alert(jqXHR);//display error log
-                        alert("error occured while deleting");
-                    }
-
-                });//ajax ends here
+                        alert("error occured while deleting");}});//ajax ends here
 
             });
 
