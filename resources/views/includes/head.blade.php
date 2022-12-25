@@ -3,11 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-<<<<<<< HEAD
     <title>Digital Design Agency</title>
-=======
-    <title>Digital Design Agency </title>
->>>>>>> 27a7140f719c6bce9acead0dca8fe2346fcc0489
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
